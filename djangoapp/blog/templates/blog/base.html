@@ -10,9 +10,11 @@
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <![endif]-->  
+        {% include 'blog/partials/_header.html' %} 
         {% block content %}{% endblock content %}
-
-        <script src="" async defer></script>
+        {% include 'blog/partials/_pagination.html' %}
+        {% include 'blog/partials/_footer.html' %}
+      <script src="" async defer></script>
     </body>
 </html>
