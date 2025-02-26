@@ -157,14 +157,15 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 img {
-   margin: 0 auto;
-  /*margin-inline: auto;*/
+  margin: 0 auto;
 }
+
 /* CodeMirror */
 .CodeMirror {
   height: auto !important;
   font-size: var(--fs-smlr) !important;
 }
+
 /* Blog */
 body,
 html,
@@ -202,6 +203,10 @@ html,
 /* Utilities */
 .pb-base {
   padding-bottom: var(--spacing-base);
+}
+
+.mt-base {
+  margin-top: var(--spacing-base);
 }
 
 .center {
