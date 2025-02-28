@@ -11,7 +11,6 @@ from django.views.generic import ListView
 
 PER_PAGE = 9
 
-
 class PostListView(ListView):
     template_name = 'blog/pages/index.html'
     context_object_name = 'posts'
@@ -94,6 +93,26 @@ class CreatedByListView(PostListView):
         })
 
         return super().get(request, *args, **kwargs)
+
+
+class CategoryListView(PostListView):
+    allow_empty = False
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return super().get_queryset().filter(
+            category__slug=self.kwargs.get('slug')
+        )
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        page_title = (
+            f'{self.object_list[0].category.name}'  # type: ignore
+            ' - Categoria - '
+        )
+        ctx.update({
+            'page_title': page_title,
+        })
+        return ctx
 
 
 def category(request, slug):
